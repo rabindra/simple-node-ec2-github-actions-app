@@ -1,0 +1,28 @@
+name: Deploy NodeJS application to EC2 Container
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Create directory if not exists
+        run: mkdir -p ~/simple-node-ec2-github-actions-app
+
+      - name: Deploy via SSH
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host : ${{ secrets.EC2_HOST }}
+          username: ubuntu
+          key: ${{ secrets.EC2_SSH_KEY }}
+          script:
+            cd ~/simple-node-ec2-github-actions-app
+            git pull
+            docker compose up -d --build
