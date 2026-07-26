@@ -23,7 +23,7 @@ jobs:
           port: 22
           username: ubuntu
           key: ${{ secrets.EC2_SSH_KEY }}
-          script:
+          script: |
             cd ~/simple-node-ec2-github-actions-app
             git pull
             docker compose up -d --build
