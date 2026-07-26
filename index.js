@@ -4,7 +4,7 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 
 app.get("/", (req, res) => {
-    res.json({"data":"Hello from Node.js running on AWS EC2 via Docker & GitHub Actions!"});
+    res.json({"data":"Hello from Node.js App running on AWS EC2 via Docker & GitHub Actions!"});
 });
 
 app.listen(PORT, ()=>{
