@@ -26,4 +26,4 @@ jobs:
           script: |
             cd ~/simple-node-ec2-github-actions-app
             git pull
-            docker compose up -d --build
+            sudo docker compose up -d --build
